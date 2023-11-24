@@ -24,8 +24,8 @@ from src.mongodb import mongodb
 load_dotenv('.env')
 
 app = Flask(__name__)
-line_bot_api = LineBotApi(os.getenv('LINE_CHANNEL_ACCESS_TOKEN'))
-handler = WebhookHandler(os.getenv('LINE_CHANNEL_SECRET'))
+line_bot_api = LineBotApi(os.getenv('Z3ziBJigZOayBRF6VtNDPNIESahZtxzt3sCz4zZyoBNc7hWlis+xJGKCtu+E5umHKLWaI0kChKKwHAmyC6jI5YBOgcmft2VgFUfUIOT/D10QsUzKdBKooRR8r2hP6H7rGnpmHUJbljtfcfHX3QHPRwdB04t89/1O/w1cDnyilFU='))
+handler = WebhookHandler(os.getenv('4cbb156bd8f77bab0c2594c243d0f509'))
 storage = None
 youtube = Youtube(step=4)
 website = Website()
