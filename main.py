@@ -31,7 +31,7 @@ youtube = Youtube(step=4)
 website = Website()
 
 
-memory = Memory(system_message=os.getenv('SYSTEM_MESSAGE'), memory_message_count=2)
+memory = Memory(system_message=os.getenv('You are a helpful assistant.'), memory_message_count=2)
 model_management = {}
 api_keys = {}
 
@@ -111,14 +111,14 @@ def handle_text_message(event):
                     chunks = website.get_content_from_url(url)
                     if len(chunks) == 0:
                         raise Exception('無法撈取此網站文字')
-                    website_reader = WebsiteReader(user_model, os.getenv('OPENAI_MODEL_ENGINE'))
+                    website_reader = WebsiteReader(user_model, os.getenv('gpt-3.5-turbo'))
                     is_successful, response, error_message = website_reader.summarize(chunks)
                     if not is_successful:
                         raise Exception(error_message)
                     role, response = get_role_and_content(response)
                     msg = TextSendMessage(text=response)
             else:
-                is_successful, response, error_message = user_model.chat_completions(memory.get(user_id), os.getenv('OPENAI_MODEL_ENGINE'))
+                is_successful, response, error_message = user_model.chat_completions(memory.get(user_id), os.getenv('gpt-3.5-turbo'))
                 if not is_successful:
                     raise Exception(error_message)
                 role, response = get_role_and_content(response)
